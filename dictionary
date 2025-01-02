@@ -1,0 +1,107 @@
+#This is a program  to translate words from a specific language to english
+
+from tkinter import *
+
+
+def translate():
+    word = entry.get()
+    lang = language.get()
+
+    translation = dictionary.get(lang, {}).get(word)
+    if translation:
+        result_label.config(text="English translation: " + translation)
+    else:
+        result_label.config(text="Inputed word is not available.")
+
+
+# dictionary with some word translations
+dictionary = {
+    "Japanese" : {
+        "Moshi moshi": "Hello",
+        "Arigato": "Thank you",
+        "Nani": "What",
+        "Genkidesu ka": "How are you",
+        "Hai": "Yes",
+        "Lie": "No",
+        "Konnichiwa": "Good afternoon",
+        "Ohayo": "Good morning",
+        "Konbawa": "Good night",
+        "Gomen nasai": "Sorry",
+        "Hayaku": "Hurry",
+        "Tomodachi": "Friend",
+        "Doko": "Where",
+        "Sugoi": "Awesome",
+        "Baka": "Fool",
+        "Damare": "Shut up",
+        "Omedeto": "Congratulations",
+        "Nanda": "What is it",
+        "Neko": "Cat"
+    },
+    "Spanish": {
+        "Hola": "Hello",
+        "Gracias": "Thank you",
+        "Adios": "Goodbye",
+        "Por favor": "Please",
+        "Amigo": "Friend",
+        "Casa": "House",
+        "Perro": "Dog",
+        "Gato": "Cat",
+        "Si": "Yes",
+        "No": "No",
+        "Buenos dias": "Good morning",
+        "Buenas noches": "Good night",
+        "¿Como estas?": "How are you",
+        "Lo siento": "Sorry",
+        "Feliz": "Happy",
+        "Triste": "Sad",
+        "¿Donde?": "Where",
+        "¿Que?": "What",
+        "Excelente": "Excellent",
+        "Felicidades": "Congratulations"
+    },
+    "Chinese": {
+    "ni hao": "hello",
+    "zai jian": "goodbye",
+    "xiexie": "thank you",
+    "shi de": "yes",
+    "bu": "no",
+    "shui": "water",
+    "shiwu": "food",
+    "chi": "eat",
+    "dui bu qi": "excuse me",
+    "zao shang hao": "good morning",
+    "wan shang hao": "good evening",
+    "bu hao": "bad",
+    "zou": "milk",
+    "chu zu che": "taxi",
+    "zuo": "left",
+    "you": "right",
+    "qi che": "ride a bike",
+    "cha": "tea",
+    "kou jiu": "cola",
+    "chi fan": "have a meal",
+    }
+}
+window = Tk()
+window.title("Dictionary")
+
+languages = ["Japanese", "Spanish", "Chinese"]
+language = StringVar(window)
+language.set("Select Language")
+lang_menu = OptionMenu(window, language, *languages)
+lang_menu.pack()
+
+
+word_label = Label(window, text="Enter Word:")
+word_label.pack()
+
+entry = Entry(window)
+entry.pack()
+
+translate_button = Button(window, text="Translate", command=translate)
+translate_button.pack()
+
+result_label = Label(window, text="")
+result_label.pack()
+
+window.mainloop()
