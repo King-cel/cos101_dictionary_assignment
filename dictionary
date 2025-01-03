@@ -7,9 +7,18 @@ def translate():
     word = entry.get()
     lang = language.get()
 
+# I put this line here for when you dont select a language before entering a word
+    if lang == "Select Language":
+        result_label.config(text="Please select a language before trying to enter a word.")
+        return
+
     translation = dictionary.get(lang, {}).get(word)
+
+    # This line is what you'll see whenever you put in a word and the translation is there, it will appear with your translation
     if translation:
         result_label.config(text="English translation: " + translation)
+
+    #This is for when the translation does not appear even when you have put in a language
     else:
         result_label.config(text="Inputed word is not available.")
 
@@ -38,26 +47,20 @@ dictionary = {
         "Neko": "Cat"
     },
     "Spanish": {
+        "Buen dia": "Good morning",
+        "Buenas tardes": "Good afternoon",
+        "Buenas noches": "Good night",
         "Hola": "Hello",
         "Gracias": "Thank you",
         "Adios": "Goodbye",
-        "Por favor": "Please",
-        "Amigo": "Friend",
-        "Casa": "House",
-        "Perro": "Dog",
-        "Gato": "Cat",
-        "Si": "Yes",
         "No": "No",
-        "Buenos dias": "Good morning",
-        "Buenas noches": "Good night",
-        "¿Como estas?": "How are you",
-        "Lo siento": "Sorry",
-        "Feliz": "Happy",
-        "Triste": "Sad",
-        "¿Donde?": "Where",
-        "¿Que?": "What",
-        "Excelente": "Excellent",
-        "Felicidades": "Congratulations"
+        "De nada": "Your welcome",
+        "Si": "Yes",
+        "Mas tardes": "Later",
+        "Riesgo": "Risk",
+        "Barriga": "Belly",
+        "Ausentarse": "Leave",
+        "Gata": "Cat",
     },
     "Chinese": {
     "ni hao": "hello",
@@ -80,12 +83,24 @@ dictionary = {
     "cha": "tea",
     "kou jiu": "cola",
     "chi fan": "have a meal",
-    }
+    },
+"Igbo" : {
+    "Ụtụtụ ọma": "Good morning",
+    "Kedu": "How are you?",
+    "Biko": "Please",
+    "Ndo": "Sorry",
+    "Ifeoma": "Good thing or Good fortune",
+    "Nna": "Father",
+    "Nne": "Mother",
+    "Chineke": "God",
+    "Ọgụgụ": "Reading",
+    "Ọgwụ": "Medicine",
+     }
 }
 window = Tk()
 window.title("Dictionary")
 
-languages = ["Japanese", "Spanish", "Chinese"]
+languages = ["Japanese", "Spanish", "Chinese", "Igbo"]
 language = StringVar(window)
 language.set("Select Language")
 lang_menu = OptionMenu(window, language, *languages)
