@@ -95,12 +95,34 @@ dictionary = {
     "Chineke": "God",
     "Ọgụgụ": "Reading",
     "Ọgwụ": "Medicine",
-     }
+     },
+    "German": {
+        "Narr": "Fool",
+        "Danke": "Thank you",
+        "Ja": "Yes",
+        "Hallo": "hello",
+        "Zeit": "Time",
+        "Essen": "Food",
+        "Familie": "family",
+        "Himmel": "Sky",
+        "Auto": "Car",
+        "Liebe": "Love",
+        "Tisch": "Table",
+        "Katze": "Cat",
+        "Hund": "Dog",
+        "Wasser": "Water",
+        "Haus": 'House',
+        "Baum": "Tree",
+        "Freund": "Friend",
+        "Buch": "Book",
+        "Schule": "school",
+        "Sonne": "Sun"
+    }
 }
 window = Tk()
 window.title("Dictionary")
 
-languages = ["Japanese", "Spanish", "Chinese", "Igbo"]
+languages = ["Japanese", "Spanish", "Chinese", "Igbo", "German"]
 language = StringVar(window)
 language.set("Select Language")
 lang_menu = OptionMenu(window, language, *languages)
